@@ -19,6 +19,8 @@ export interface ReadmeData {
     repositoryName: string;
     features?: Feature[];
     technologies?: Technology[];
+    preview?: boolean;
+    logo?: boolean;
 }
 
 export const defaultReadmeData: ReadmeData = {
@@ -31,5 +33,7 @@ export const defaultReadmeData: ReadmeData = {
   githubUsername: '',
   repositoryName: '',
   features: [],
-  technologies: []
+  technologies: [],
+  preview: false,
+  logo: false
 };
