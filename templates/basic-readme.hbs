@@ -1,0 +1,146 @@
+<div align="center" id="top">
+  <img src="./assets/images/logo.png" alt="{{projectName}}" style="width: 250px" />
+</div>
+
+<h1 align="center" style="text-align: center; font-size: xxx-large">{{projectName}}</h1>
+
+<p align="center" style="width: 100%; display: flex; justify-content: center; gap: 5px">
+  <img alt="Github language count" src="https://img.shields.io/github/languages/count/{{githubUsername}}/{{repositoryName}}?color=56BEB8">
+
+  <img alt="Github top language" src="https://img.shields.io/github/languages/top/{{githubUsername}}/{{repositoryName}}?color=56BEB8">
+
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/{{githubUsername}}/{{repositoryName}}?color=56BEB8">
+
+  <img alt="License" src="https://img.shields.io/github/license/{{githubUsername}}/{{repositoryName}}?color=56BEB8">
+
+  <img alt="App version" src="https://img.shields.io/badge/version-{{version}}-blue.svg">
+
+</p>
+<br>
+<p align="center" style="width: 100%; display: flex; justify-content: center; gap: 5px">
+
+  <img alt="Angular Version" src="https://img.shields.io/badge/Angular-17.x-ED213A?style=flat&logo=angular&logoColor=white">
+
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white">
+
+  <img alt="Node.js Version" src="https://img.shields.io/node/v/npm?color=56BEB8">
+
+  <img alt="npm" src="https://img.shields.io/npm/v/@angular/cli?label=Angular%20CLI%20Version&color=56BEB8">
+
+  <img alt="TMDB API" src="https://img.shields.io/badge/TMDB%20API-000000?style=flat&logo=themoviedb&logoColor=white">
+
+</p>
+
+<p align="center" style="width: 100%; display: flex; justify-content: center; gap: 5px">
+  <img alt="Github stars" src="https://img.shields.io/github/stars/{{githubUsername}}/{{repositoryName}}?color=56BEB8" />
+
+  <img alt="Github forks" src="https://img.shields.io/github/forks/{{githubUsername}}/{{repositoryName}}?color=56BEB8" />
+
+  <img alt="GitHub watchers" src="https://img.shields.io/github/watchers/{{githubUsername}}/{{repositoryName}}?color=56BEB8">
+
+  </p>
+
+<!-- Status -->
+
+<hr>
+
+<p align="center" style="width: 100%; display: flex; justify-content: center; gap: 5px; font-size: small">
+  <a href="#dart-about">About</a> &#xa0; | &#xa0;
+  <a href="#sparkles-features">Features</a> &#xa0; | &#xa0;
+  <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
+  <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
+  <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
+  <a href="#tv-preview">Preview</a> &#xa0; | &#xa0;
+  <a href="#memo-license">License</a> &#xa0; | &#xa0;
+  <a href="https://github.com/Pouish85" target="_blank">Author</a>
+</p>
+
+<br>
+
+## :dart: About
+
+{{description}}
+
+## :sparkles: Features
+
+{{#each features}}
+- :heavy_check_mark: **{{this.name}}** : {{this.text}}.
+{{/each}}}}.
+
+## :rocket: Technologies
+
+The following tools were used in this project:
+
+{{#each technologies}}
+- [{{this.name}}]({{this.link}})
+{{/each}}
+
+## :white_check_mark: Requirements
+
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com), [Node.js](https://nodejs.org/) (which includes npm), and [Angular CLI](https://angular.io/cli) installed.
+
+## :checkered_flag: Starting
+
+To get this project up and running on your local machine, follow these steps.
+
+```bash
+# Clone this repository
+$ git clone git clone https://github.com/{{githubUsername}}/{{repositoryName}}
+
+# Navigate into the project directory
+$ cd {{repositoryName}}
+
+# Install the project dependencies
+$ npm install
+```
+
+## Development server
+
+To start a local development server, run:
+
+```bash
+ng serve
+```
+
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+
+## Building for Production
+
+To build the project for deployment, run:
+
+```bash
+ng build
+```
+
+The compiled build artifacts will be stored in the dist/ directory.
+
+## :tv: Preview
+
+<div align="center">
+  <h3>Home Page (Popular Movies)</h3>
+  <img alt="Preview Landing" src="./assets/images/app-screenshot-landing.png" style="max-width: 800px; display: block; margin: 0 auto; border-radius: 10px" />
+</div>
+
+<br>
+
+<div align="center">
+  <h3>Search Results</h3>
+  <img alt="Preview Search Results" src="./assets/images/app-screenshot-search.png" style="max-width: 800px; display: block; margin: 0 auto; border-radius: 10px" />
+</div>
+
+<br>
+
+<div align="center">
+  <h3>Item Detail Page</h3>
+  <img alt="Preview Item Detailed Page" src="./assets/images/app-screenshot-item-details.png" style="max-width: 800px; display: block; margin: 0 auto; border-radius: 10px" />
+</div>
+
+## :memo: License
+
+This project is under license from MIT. For more details, see the [LICENSE](LICENSE) file.
+
+Made with :heart: by <a href="https://github.com/{{githubUsername}}" target="_blank">{{githubUsername}}</a>
+
+&#xa0;
+
+<a href="#top">Back to top</a>
