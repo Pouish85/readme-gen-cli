@@ -1,34 +1,39 @@
 {
-  "name": "readme-gen-cli",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Pouish85/readme-gen-cli.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/Pouish85/readme-gen-cli/issues"
-  },
-  "homepage": "https://github.com/Pouish85/readme-gen-cli#readme",
-  "devDependencies": {
-    "@types/commander": "^2.12.0",
-    "@types/handlebars": "^4.0.40",
-    "@types/node": "^24.0.12",
-    "@types/prompts": "^2.4.9",
-    "typescript": "^5.8.3"
-  },
-  "dependencies": {
-    "commander": "^14.0.0",
-    "handlebars": "^4.7.8",
-    "prompts": "^2.4.2"
-  }
+	"name": "readme-gen-cli",
+	"version": "1.0.0",
+	"description": "Automate the creation of a README file for your repository. The app will look into your package.json file and then ask you to confirm the data. Once the file is created, you can further personalize it with your specific data such as logo, preview images, prompts, and more.",
+	"main": "dist/index.js",
+	"bin": {
+		"readme-gen": "./dist/index.js"
+	},
+	"scripts": {
+		"build": "tsc",
+		"start": "node dist/index.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Pouish85/readme-gen-cli.git"
+	},
+	"keywords": [],
+	"author": "Pouish85",
+	"license": "MIT",
+	"type": "commonjs",
+	"bugs": {
+		"url": "https://github.com/Pouish85/readme-gen-cli/issues"
+	},
+	"homepage": "https://github.com/Pouish85/readme-gen-cli#readme",
+	"devDependencies": {
+		"@types/commander": "^2.12.0",
+		"@types/handlebars": "^4.0.40",
+		"@types/node": "^24.0.12",
+		"@types/prompts": "^2.4.9",
+		"prettier": "3.6.2",
+		"prettier-plugin-organize-imports": "^4.1.0",
+		"typescript": "^5.8.3"
+	},
+	"dependencies": {
+		"commander": "^14.0.0",
+		"handlebars": "^4.7.8",
+		"prompts": "^2.4.2"
+	}
 }

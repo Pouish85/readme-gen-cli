@@ -1,4 +1,3 @@
-
 <h1 align="center" style="text-align: center; font-size: xxx-large">Readme Generator</h1>
 
 <div align="center" style="width: 100%; display: flex; justify-content: center; gap: 5px">
@@ -95,7 +94,6 @@ After build you can run the application with the following command:
 ```bash
 npm start
 ```
-
 
 ## :memo: License
 
