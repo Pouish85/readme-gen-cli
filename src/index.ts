@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
-import {Command} from "commander";
+import { Command } from "commander";
 import * as fs from "fs/promises";
 import * as fsp from "fs/promises";
 import Handlebars from "handlebars";
 import * as path from "path";
 import prompts from "prompts";
-import {defaultReadmeData, ReadmeData} from "./data";
+import { defaultReadmeData, ReadmeData } from "./data";
 
 const program = new Command();
 
@@ -86,7 +86,7 @@ async function generateReadmeContent(data: ReadmeData): Promise<string> {
 	try {
 		const templateContent = await fsp.readFile(templatePath, { encoding: "utf-8" });
 		const template = Handlebars.compile(templateContent);
-      return template(data);
+		return template(data);
 	} catch (error) {
 		console.error("❌ Error generating README content:", error);
 		throw new Error("Failed to generate README content.");
@@ -94,13 +94,11 @@ async function generateReadmeContent(data: ReadmeData): Promise<string> {
 }
 
 async function main() {
-	// 1. Définir et parser les options CLI
 	program
-		.version("1.0.0") // Utilise la version de ton CLI
+		.version("1.0.0")
 		.description("Generate a personalized README.md file.")
 		.option("-p, --projectName <name>", "Project name")
 		.option("-d, --description <text>", "Project description")
-		// Correction ici : changement de l'option pour éviter le conflit avec la version de Commander
 		.option("--projectVersion <version>", "Project version")
 		.option("-a, --author <name>", "Author name")
 		.option("-l, --license <type>", "Project license (e.g., MIT, ISC)")
@@ -109,7 +107,6 @@ async function main() {
 		.option("-m, --mainLanguage <language>", "Main programming language")
 		.option("--no-prompts", "Skip all interactive prompts and use default/provided values")
 		.option("-f, --force", "Force overwrite existing README.md without confirmation");
-	// Ajoute des options pour logo et preview
 	program
 		.option(
 			"--logo <boolean>",
@@ -122,21 +119,19 @@ async function main() {
 			(value) => value === "true"
 		);
 
-	program.parse(process.argv); // Analyse les arguments de ligne de commande
-	const cliOptions = program.opts(); // Récupère les options parsées
+	program.parse(process.argv);
+	const cliOptions = program.opts();
 
-	// 2. Initialiser finalData en fusionnant toutes les sources
 	const packageData = await getPackageJsonData();
 
 	let finalData: ReadmeData = {
-		...defaultReadmeData, // La base
-		...packageData, // Surchargée par package.json
-		// Surcharge par les options CLI. Attention à bien mapper projectVersion vers version
+		...defaultReadmeData,
+		...packageData,
 		projectName:
 			cliOptions.projectName || packageData.projectName || defaultReadmeData.projectName,
 		description:
 			cliOptions.description || packageData.description || defaultReadmeData.description,
-		version: cliOptions.projectVersion || packageData.version || defaultReadmeData.version, // <-- Correction ici pour projectVersion
+		version: cliOptions.projectVersion || packageData.version || defaultReadmeData.version,
 		author: cliOptions.author || packageData.author || defaultReadmeData.author,
 		license: cliOptions.license || packageData.license || defaultReadmeData.license,
 		githubUsername:
@@ -158,13 +153,11 @@ async function main() {
 
 	console.log("\n--- Let's generate your README.md! ---\n");
 
-	// 3. Exécuter les prompts SEULEMENT si --no-prompts n'est PAS spécifié
 	if (!cliOptions.noPrompts) {
 		console.log(
 			"We've extracted some information from your package.json. Please confirm or modify:\n"
 		);
 
-		// Définir TOUTES les questions possibles pour les prompts
 		const allPromptsQuestions: prompts.PromptObject[] = [
 			{
 				type: "text",
@@ -181,7 +174,7 @@ async function main() {
 			},
 			{
 				type: "text",
-				name: "version", // Le nom dans ReadmeData est 'version'
+				name: "version",
 				message: "Project version",
 				initial: finalData.version,
 			},
@@ -237,36 +230,26 @@ async function main() {
 			},
 		];
 
-		// Filtrer les questions pour ne poser que celles dont la valeur n'a PAS été fournie via CLI
 		const promptsToAsk = allPromptsQuestions.filter((q) => {
-			// q.name peut être une chaîne de caractères ou un tableau de chaînes.
-			// On s'assure que 'name' est bien une clé de ReadmeData pour l'accès à finalData
 			const readmeDataKey = q.name as keyof ReadmeData;
 			const cliOptionKey = q.name as keyof typeof cliOptions;
 
-			// Cas spécial pour 'version' qui correspond à 'projectVersion' dans cliOptions
 			if (readmeDataKey === "version" && cliOptions.projectVersion !== undefined) {
 				console.log(`Project version: "${finalData.version}" (from CLI option)`);
-				return false; // Ne pas poser la question
+				return false;
 			}
 
-			// Pour toutes les autres options, on vérifie si l'option CLI correspondante est définie
 			if (cliOptions[cliOptionKey] !== undefined) {
-				// Ici, nous devons être prudents car cliOptions[cliOptionKey] peut être une string ou un boolean.
-				// finalData[readmeDataKey] est du bon type.
 				console.log(`${q.message}: "${finalData[readmeDataKey]}" (from CLI option)`);
-				return false; // Ne pas inclure cette question dans les prompts
+				return false;
 			}
-			return true; // Inclure cette question
+			return true;
 		});
 
-		// Exécuter les prompts uniquement pour les questions non ignorées
 		const responses = await prompts(promptsToAsk);
 
-		// Mettre à jour finalData avec les réponses des prompts
 		finalData = { ...finalData, ...responses };
 
-		// Prompts pour les Features (Boucle interactive)
 		console.log("\n--- Features ---\n");
 		finalData.features = finalData.features || [];
 		let addMoreFeatures = true;
@@ -340,11 +323,9 @@ async function main() {
 		console.log("Interactive prompts are skipped. Using provided/default values.");
 	}
 
-	// 4. Générer le README
 	console.log("\n--- Generating README.md... ---");
 
 	const outputPath = path.join(process.cwd(), "README.md");
-	// Vérifie si le fichier existe et demande confirmation si --force n'est pas utilisé
 	if (
 		(await fsp
 			.access(outputPath)
