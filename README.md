@@ -1,3 +1,7 @@
+<div align="center" id="top">
+    <img src="./assets/images/logo.png" alt="cli-readme-gene" style="width: 250px" />
+</div>
+
 <h1 align="center" style="text-align: center; font-size: xxx-large">Readme Generator</h1>
 
 <div align="center" style="width: 100%; display: flex; justify-content: center; gap: 5px">
@@ -9,7 +13,7 @@
 
   <img alt="License" src="https://img.shields.io/github/license/Pouish85/readme-gen-cli?color=56BEB8">
 
-  <img alt="App version" src="https://img.shields.io/badge/version-1.0.0-blue.svg">
+  <img alt="App version" src="https://img.shields.io/badge/version-1.0.2-blue.svg">
 
 </div>
 <br>
@@ -33,9 +37,11 @@
   <a href="#rocket-technologies">Technologies</a> &#xa0; | &#xa0;
   <a href="#white_check_mark-requirements">Requirements</a> &#xa0; | &#xa0;
   <a href="#checkered_flag-starting">Starting</a> &#xa0; | &#xa0;
-  
-  <a href="#memo-license">License</a> &#xa0; | &#xa0;
-  <a href="https://github.com/Pouish85" target="_blank">Author</a>
+  <a href="#octocat-contribute">Contribute</a> &#xa0; | &#xa0;
+
+<a href="#memo-license">License</a> &#xa0; | &#xa0;
+<a href="https://github.com/Pouish85" target="_blank">Author</a>
+
 </div>
 
 <br>
@@ -49,7 +55,7 @@ Automate the creation of a README file for your repository. The app will look in
 - :heavy_check_mark: **Read** : Read your package.json file.
 - :heavy_check_mark: **Ask** : Ask you to confirm data.
 - :heavy_check_mark: **Create** : Create the README file for you.
-- :heavy_check_mark: **Personalize** : You can now parsonalize the file and use it.
+- :heavy_check_mark: **Personalize** : You can now enrich your README with custom sections like logos, preview images, features, and technologies and use it.
 
 ## :rocket: Technologies
 
@@ -60,9 +66,26 @@ The following tools were used in this project:
 
 ## :white_check_mark: Requirements
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) installed. #You can add other requirements here if needed.
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [NodeJs](https://nodejs.org/) installed.
 
 ## :checkered_flag: Starting
+
+For using this app into your computer or your project, you need to install it (locally or globally) with npm. You can do this by running the following command:
+
+```bash
+# Install the package locally
+npm install -D cli-readme-gene
+
+# Or globally
+
+npm install -g cli-readme-gene
+```
+
+Once installed, you can run the command `readme-gen` in your terminal to start the application.
+
+## :octocat: Contribute
+
+You want to contribute? That's awesome! :tada: :confetti_ball:
 
 To get this project up and running on your local machine, follow these steps.
 

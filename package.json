@@ -1,13 +1,14 @@
 {
-	"name": "readme-gen-cli",
-	"version": "1.0.0",
+	"name": "cli-readme-gene",
+	"version": "1.0.2",
 	"description": "Automate the creation of a README file for your repository. The app will look into your package.json file and then ask you to confirm the data. Once the file is created, you can further personalize it with your specific data such as logo, preview images, prompts, and more.",
 	"main": "dist/index.js",
 	"bin": {
 		"readme-gen": "./dist/index.js"
 	},
 	"scripts": {
-		"build": "tsc",
+		"prebuild": "rm -rf dist",
+		"build": "tsc && cpx \"templates/**/*\" dist/templates && chmod +x dist/index.js",
 		"start": "node dist/index.js",
 		"test": "jest"
 	},
