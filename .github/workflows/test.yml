@@ -1,0 +1,47 @@
+name: "CI Tests and Quality"
+
+on:
+    pull_request:
+
+jobs:
+    prettier:
+        name: Prettier
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+            - name: Install Dependencies
+              run: npm ci
+            - name: Code Prettier
+              run: npx prettier . --check
+
+    unit-tests:
+        name: Unit tests
+        needs: [prettier]
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            pull-requests: write
+            issues: write
+            checks: write
+        steps:
+            - uses: actions/checkout@v4
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+            - name: Install Dependencies
+              run: npm ci
+            - name: Run Tests
+              run: |
+                  npx jest --testLocationInResults --json --coverage --outputFile=jest.results.json
+            - name: Multi Jest GitHub Action for Server
+              uses: Pouish85/multi-jest-github-action@v1.0.0
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              with:
+                  file-name: jest.results.json
+                  test-name: "Unit Tests"
+                  config-file-name: "jest.config.js"
+                  test-command: "npx jest"

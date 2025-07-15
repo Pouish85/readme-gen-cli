@@ -1,97 +1,16 @@
 #!/usr/bin/env node
 
 import { Command } from "commander";
-import * as fs from "fs/promises";
 import * as fsp from "fs/promises";
-import Handlebars from "handlebars";
 import * as path from "path";
 import prompts from "prompts";
 import { defaultReadmeData, ReadmeData } from "./data";
+import { getPackageJsonData } from "./utils/packageJson";
+import { generateReadmeContent } from "./utils/readmeGenerator";
 
 const program = new Command();
-
-/**
- * Read the package.json file from the current directory and extract relevant information.
- * @returns {Promise<Partial<ReadmeData>>}
- */
-async function getPackageJsonData(): Promise<Partial<ReadmeData>> {
-	const packageJsonPath = path.join(process.cwd(), "package.json");
-	try {
-		const fileContent = await fs.readFile(packageJsonPath, { encoding: "utf-8" });
-		const packageJson = JSON.parse(fileContent);
-
-		let projectName = packageJson.name || "";
-		let description = packageJson.description || "";
-		let version = packageJson.version || "1.0.0";
-		let author = "";
-		let githubUsername = "";
-		let repositoryName = projectName;
-		let license = packageJson.license || "MIT";
-
-		if (typeof packageJson.author === "string") {
-			author = packageJson.author.split("<")[0].trim();
-			if (author && !author.includes(" ") && !author.includes("/")) {
-				githubUsername = author;
-			}
-		} else if (packageJson.author?.name) {
-			author = packageJson.author.name;
-			if (author && !author.includes(" ") && !author.includes("/")) {
-				githubUsername = author;
-			}
-		}
-
-		const repoUrl = packageJson.repository?.url || packageJson.homepage || "";
-		if (repoUrl.includes("github.com")) {
-			const parts = repoUrl.split("/");
-			if (parts.length >= 5) {
-				githubUsername = parts[3];
-				repositoryName = parts[4].replace(".git", "");
-			}
-		} else if (repoUrl.includes("gitlab.com")) {
-			const parts = repoUrl.split("/");
-			if (parts.length >= 5) {
-				githubUsername = parts[3];
-				repositoryName = parts[4].replace(".git", "");
-			}
-		}
-
-		if (!author && githubUsername) {
-			author = githubUsername;
-		}
-
-		return {
-			projectName,
-			description,
-			version,
-			author,
-			license,
-			githubUsername,
-			repositoryName,
-		};
-	} catch (error) {
-		console.warn(
-			"⚠️ Could not read or parse package.json. Some information may need to be entered manually."
-		);
-		return {};
-	}
-}
-
-/**
- * Generate the README.md content using Handlebars template engine.
- * @param {ReadmeData} data
- * @returns {Promise<string>}
- */
-async function generateReadmeContent(data: ReadmeData): Promise<string> {
-	const templatePath = path.join(__dirname, "..", "templates", "basic-readme.hbs");
-	try {
-		const templateContent = await fsp.readFile(templatePath, { encoding: "utf-8" });
-		const template = Handlebars.compile(templateContent);
-		return template(data);
-	} catch (error) {
-		console.error("❌ Error generating README content:", error);
-		throw new Error("Failed to generate README content.");
-	}
-}
+program.allowUnknownOption();
+program.allowExcessArguments();
 
 async function main() {
 	program
@@ -354,4 +273,6 @@ async function main() {
 	}
 }
 
-main();
+if (require.main === module) {
+	main();
+}
