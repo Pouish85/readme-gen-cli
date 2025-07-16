@@ -16,7 +16,7 @@ export async function generateReadmeContent(data: ReadmeData): Promise<string> {
 		const template = Handlebars.compile(templateFile);
 		return template(data);
 	} catch (error) {
-		console.error("❌ Erreur lors de la génération du contenu du README :", error);
-		throw new Error("Échec de la génération du contenu du README.");
+		console.error("❌ Error generating README content:", error);
+		throw new Error("Failed to generate README content.");
 	}
 }
