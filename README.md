@@ -81,7 +81,7 @@ npm install -D cli-readme-gene
 npm install -g cli-readme-gene
 ```
 
-Once installed, you can run the command `readme-gen` in your terminal to start the application.
+Once installed, you can run the command `npx readme-gen` in your terminal to start the application.
 
 ## :octocat: Contribute
 
