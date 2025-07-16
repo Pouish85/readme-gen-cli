@@ -4,5 +4,8 @@ coverage
 dist
 node_modules
 
-#IDEs
+# IDEs
 .idea
+
+# Templates
+templates

@@ -9,7 +9,8 @@ import { ReadmeData } from "../data";
  * @returns {Promise<string>}
  */
 export async function generateReadmeContent(data: ReadmeData): Promise<string> {
-	const templatePath = path.join(__dirname, "..", "templates", "basic-readme.hbs");
+	const templatePath = path.join(__dirname, "..", "..", "templates", "basic-readme.hbs");
+
 	try {
 		const templateContent = await fsp.readFile(templatePath, { encoding: "utf-8" });
 		const template = Handlebars.compile(templateContent);
