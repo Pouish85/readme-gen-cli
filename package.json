@@ -1,6 +1,6 @@
 {
 	"name": "cli-readme-gene",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "Automate the creation of a README file for your repository. The app will look into your package.json file and then ask you to confirm the data. Once the file is created, you can further personalize it with your specific data such as logo, preview images, prompts, and more.",
 	"main": "dist/index.js",
 	"bin": {
@@ -8,7 +8,7 @@
 	},
 	"scripts": {
 		"prebuild": "rm -rf dist",
-		"build": "tsc && cpx \"templates/**/*\" dist/templates && chmod +x dist/index.js",
+		"build": "tsc && npx cpx \"templates/**/*\" dist/templates && chmod +x dist/index.js",
 		"start": "node dist/index.js",
 		"test": "jest"
 	},
@@ -30,6 +30,7 @@
 		"@types/jest": "^30.0.0",
 		"@types/node": "^24.0.12",
 		"@types/prompts": "^2.4.9",
+		"cpx": "^1.5.0",
 		"jest": "^30.0.4",
 		"prettier": "3.6.2",
 		"prettier-plugin-organize-imports": "^4.1.0",
