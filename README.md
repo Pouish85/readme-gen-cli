@@ -13,7 +13,7 @@
 
   <img alt="License" src="https://img.shields.io/github/license/Pouish85/readme-gen-cli?color=56BEB8">
 
-  <img alt="App version" src="https://img.shields.io/badge/version-1.0.2-blue.svg">
+  <img alt="App version" src="https://img.shields.io/badge/version-1.0.5-blue.svg">
 
 </div>
 <br>
