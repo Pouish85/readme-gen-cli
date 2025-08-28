@@ -56,28 +56,49 @@
 ## :sparkles: Features
 
 {{#each features}}
-- :heavy_check_mark: **{{this.name}}** :
-{{this.text}}.
+- :heavy_check_mark: **{{this.name}}** : {{this.text}}.
 {{/each}}
 
-## :rocket: Technologies The following tools were used in this project:
+## :rocket: Technologies
+
+The following tools were used in this project:
 
 {{#each technologies}}
 - [{{this.name}}]({{this.link}})
 {{/each}}
 
-## :white_check_mark: Requirements Before starting :checkered_flag:, you need to have
-[Git](https://git-scm.com) installed. #You can add other requirements here if needed. ##
-:checkered_flag: Starting To get this project up and running on your local machine, follow these
-steps. ```bash # Clone this repository $ git clone git clone https://github.com/{{githubUsername}}/{{repositoryName}}
+## :white_check_mark: Requirements
 
-# Navigate into the project directory $ cd
-{{repositoryName}}
+Before starting :checkered_flag:, you need to have[Git](https://git-scm.com) installed. ##You can add other requirements here if needed.##
 
-# Install the project dependencies $ npm install ``` ## Building for Production To build the project
-for deployment, run: ```bash npm run build ``` The compiled build artifacts will be stored in the
-dist/ directory. ## Run the application After build you can run the application with the following
-command: ```bash npm start ```
+##:checkered_flag: Starting
+
+To get this project up and running on your local machine, follow these
+steps.
+```bash
+# Clone this repository
+$ git clone git clone https://github.com/{{githubUsername}}/{{repositoryName}}
+
+# Navigate into the project directory
+$ cd {{repositoryName}}
+
+# Install the project dependencies
+$ npm install
+```
+
+## Building for Production
+To build the project for deployment, run:
+```bash
+npm run build
+```
+
+The compiled build artifacts will be stored in the dist/ directory.
+
+## Run the application
+After build you can run the application with the following command:
+```bash
+npm start
+```
 
 {{#if preview}}
 ## :tv: Preview
